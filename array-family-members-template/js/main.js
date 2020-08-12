@@ -1,5 +1,5 @@
 /*
-Fetches json data from the file persons.json
+ Array of family members
 */
 let familyMembers = [{
   name: "Peter Madsen",
@@ -42,7 +42,7 @@ let familyMembers = [{
 console.log(familyMembers);
 
 /*
-Appends json data to the DOM
+Appends data to the DOM
 */
 function appendPersons(persons) {
   let htmlTemplate = "";
