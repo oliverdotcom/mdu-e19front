@@ -3,6 +3,10 @@
 // appends a string to the DOM
 document.querySelector("#content").innerHTML = "Hi Frontenders!";
 
+function showAlert() {
+  alert('Open your Developer Console!');
+}
+
 // declaring teacher objects
 let teacher1 = {
   name: 'Birgitte',
@@ -14,10 +18,16 @@ let teacher2 = {
   initials: 'race'
 };
 
+// let teacher3 = {
+  
+// };
+
+// let teacher4 = {
+
+// };
+
 // logs the teacher objects to the console
 console.log(teacher1);
 console.log(teacher2);
-
-function showAlert() {
-  alert('Open your Developer Console!');
-}
+// console.log(teacher3);
+// console.log(teacher4);
