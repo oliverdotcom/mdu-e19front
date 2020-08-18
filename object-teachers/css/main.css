@@ -20,7 +20,7 @@ h3 {
   letter-spacing: 3px;
 }
 
-/* Grid container */
+/* ---------- grid container styling ---------- */
 .grid-container {
   display: grid;
   grid-template-columns: 100%;
@@ -47,5 +47,4 @@ h3 {
 .grid-container>article img {
   max-width: 300px;
   width: 100%;
-  margin-bottom: 1em;
 }

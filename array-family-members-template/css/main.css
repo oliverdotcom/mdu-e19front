@@ -50,6 +50,7 @@ input {
   display: block;
 }
 
+/* ---------- grid container styling ---------- */
 .grid-container {
   display: grid;
   grid-template-columns: 100%;
@@ -76,5 +77,4 @@ input {
 .grid-container>article img {
   max-width: 300px;
   width: 100%;
-  margin-bottom: 1em;
 }
