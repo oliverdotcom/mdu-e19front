@@ -9,15 +9,6 @@ let teachers = [{
     position: "Senior Lecturer",
     department: "Multimedia Design",
     img: "https://www.baaa.dk/media/u4gorzsd/birgitte-kirk-iversen2.jpg"
-  }, {
-    name: "Kim Elkjær Marcher-Jepsen",
-    initials: "kije",
-    mail: "kije@baaa.dk",
-    phone: "7228 6325",
-    address: "Sønderhøj 30, 8260 Viby J",
-    position: "Lecturer",
-    department: "Multimedia Design",
-    img: "https://www.baaa.dk/media/3zihz21l/kim-elkjaer-marcher-jepsen.jpg"
   },
   {
     name: "Rasmus Cederdorff",
