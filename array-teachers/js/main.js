@@ -29,12 +29,12 @@ appendTeachers(teachers);
 function appendTeachers(teachers) {
   for (let teacher of teachers) {
     console.log(teacher);
-    document.querySelector("#grid-teachers").innerHTML +=
-      "<article>" +
-      "<img src='" + teacher.img + "'>" +
-      "<h3>" + teacher.name + "</h3>" +
-      teacher.position + "<br>" +
-      "<a href='mailto:" + teacher.mail + "'>" + teacher.mail + "</a>" +
-      "</article>";
+    document.querySelector("#grid-teachers").innerHTML +=/*html*/ `
+    <article>
+      <img src='${teacher.img}'>
+      <h3>${teacher.name}</h3>
+      ${teacher.position}<br>
+      <a href='mailto:${teacher.mail}'>${teacher.mail}</a>
+    </article>`;
   }
 }

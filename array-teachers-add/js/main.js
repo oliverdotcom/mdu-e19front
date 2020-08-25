@@ -41,33 +41,48 @@ let teachers = [{
 ];
 
 console.log(teachers);
-appendTeachers(teachers);
 
-// Appending objects to the DOM
 function appendTeachers(teachers) {
-  document.querySelector("#grid-teachers").innerHTML = ""; // clear content of grid teachers
   for (let teacher of teachers) {
     console.log(teacher);
-    document.querySelector("#grid-teachers").innerHTML +=
-      "<article>" +
-      "<img src='" + teacher.img + "'>" +
-      "<h3>" + teacher.name + "</h3>" +
-      teacher.position + "<br>" +
-      "<a href='mailto:" + teacher.mail + "'>" + teacher.mail + "</a>" +
-      "</article>";
+    document.querySelector("#grid-teachers").innerHTML += `
+      <article>
+        <img src='${teacher.img}'>
+        <h3>${teacher.name}</h3>
+        ${teacher.position}<br>
+        <a href='mailto:${teacher.mail}'>${teacher.mail}</a>
+      </article>
+    `;
+
   }
 }
 
-function search(value) {
-  console.log(value);
-  let filteredTeachers = [];
-  for (let teacher of teachers) {
-    let name = teacher.name.toLowerCase();
-    if (name.includes(value.toLowerCase())) {
-      filteredTeachers.push(teacher);
-    }
-  }
+appendTeachers(teachers);
 
-  console.log(filteredTeachers);
-  appendTeachers(filteredTeachers);
+function createTeacher() {
+  // get the values from the input fields
+  let name = document.querySelector('#add-teacher-form input[name=name]').value;
+  let initials = document.querySelector('#add-teacher-form input[name=initials]').value;
+  let mail = document.querySelector('#add-teacher-form input[name=mail]').value;
+  let phone = document.querySelector('#add-teacher-form input[name=phone]').value;
+  let img = document.querySelector('#add-teacher-form input[name=img]').value;
+  let position = document.querySelector('#add-teacher-form input[name=position]').value;
+
+  // create a new object
+  let newteacher = {
+    name: name,
+    initials: initials,
+    mail: mail,
+    phone: phone,
+    img: img,
+    position: position
+  };
+
+  // push the new object to the array
+  teachers.push(newteacher);
+
+  // reset grid
+  document.querySelector("#grid-teachers").innerHTML = "";
+  // call appendTeachers to append all teachers again
+  appendTeachers(teachers);
 }
