@@ -1,7 +1,18 @@
 "use strict"; // to enable strict mode and modern JavaScript functionality
 
-// Example 1
+// “var” tolerates redeclarations
+var user1 = "Pete";
+var user1 = "John"; // this "var" does nothing (already declared)
+// ...it doesn't trigger an error
+console.log(user1); // John
+
+let user2;
+let user2; // SyntaxError: 'user' has already been declared
+
+
 // “var” has no block scope
+
+// Example 1
 if (true) {
   var test1 = true; // use "var" instead of "let"
 }
