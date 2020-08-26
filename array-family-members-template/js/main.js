@@ -47,7 +47,7 @@ Appends data to the DOM
 function appendPersons(persons) {
   let htmlTemplate = "";
   for (const person of persons) {
-  htmlTemplate += /*html*/`
+    htmlTemplate += /*html*/`
     <article>
       <img src="${person.img}">
       <h4>${person.name}</h4>
