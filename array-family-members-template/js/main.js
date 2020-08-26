@@ -46,9 +46,17 @@ Appends data to the DOM
 */
 function appendPersons(persons) {
   let htmlTemplate = "";
-
-  // TODO: implement loop appending the persons
-
+  for (const person of persons) {
+  htmlTemplate += /*html*/`
+  <article>
+    <img src="${person.img}">
+    <h4>${person.name}</h4>
+    <p>${person.age} years old</p>
+    <p>Hair color: ${person.hairColor}</p>
+    <p>Relation: ${person.relation}</p>
+  </article>
+  `;
+  }
   document.querySelector("#persons").innerHTML = htmlTemplate;
 }
 
