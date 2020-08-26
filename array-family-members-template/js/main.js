@@ -48,13 +48,13 @@ function appendPersons(persons) {
   let htmlTemplate = "";
   for (const person of persons) {
   htmlTemplate += /*html*/`
-  <article>
-    <img src="${person.img}">
-    <h4>${person.name}</h4>
-    <p>${person.age} years old</p>
-    <p>Hair color: ${person.hairColor}</p>
-    <p>Relation: ${person.relation}</p>
-  </article>
+    <article>
+      <img src="${person.img}">
+      <h4>${person.name}</h4>
+      <p>${person.age} years old</p>
+      <p>Hair color: ${person.hairColor}</p>
+      <p>Relation: ${person.relation}</p>
+    </article>
   `;
   }
   document.querySelector("#persons").innerHTML = htmlTemplate;
