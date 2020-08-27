@@ -24,6 +24,7 @@
     <header class="topbar">
       <h2>Products</h2>
     </header>
+    <input type="search" placeholder="Search" onkeyup="search(this.value)">
     <section id="products-container"></section>
   </section>
 
@@ -32,6 +33,13 @@
     <header class="topbar">
       <h2>Add New Product</h2>
     </header>
+    <form>
+      <input id="brand" type="text" name="brand" placeholder="Brand">
+      <input id="model" type="text" name="model" placeholder="Model">
+      <input id="price" type="text" name="price" placeholder="Price">
+      <input id="img" type="text" name="img" placeholder="Image URL">
+      <button type="button" name="button" onclick="addNewProduct()">Save</button>
+    </form>
   </section>
 
   <!-- SPA functionality  -->
