@@ -1,3 +1,9 @@
+// =========== Product functionality =========== //
+/*
+global variables: _products
+*/
+let _familyMembers = [];
+
 /*
 Fetches json data from the file persons.json
 */
@@ -7,7 +13,8 @@ fetch('json/persons.json')
   })
   .then(function (jsonData) {
     console.log(jsonData);
-    // todo: call appendPersons(jsonData)
+    _familyMembers = jsonData;
+    // todo: call appendPersons(...)
   });
 
 /*
