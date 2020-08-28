@@ -1,45 +1,21 @@
+// =========== Product functionality =========== //
+/*
+global variable: _familyMembers
+*/
+let _familyMembers = [];
+
 /*
 Fetches json data from the file persons.json
 */
-let familyMembers = [{
-  name: "Peter Madsen",
-  age: 52,
-  hairColor: "blonde",
-  relation: "dad",
-  img: "img/dad.jpg"
-}, {
-  name: "Ane Madsen",
-  age: 51,
-  hairColor: "brown",
-  relation: "mom",
-  img: "img/ane.jpg"
-}, {
-  name: "Rasmus Madsen",
-  age: 29,
-  hairColor: "blonde",
-  relation: "brother",
-  img: "img/rasmus.jpg"
-}, {
-  name: "Mie Madsen",
-  age: 25,
-  hairColor: "brown",
-  relation: "sister",
-  img: "img/mie.jpg"
-}, {
-  name: "Mads Madsen",
-  age: 18,
-  hairColor: "dark",
-  relation: "brother",
-  img: "img/mads.jpg"
-}, {
-  name: "Jens Madsen",
-  age: 14,
-  hairColor: "blonde",
-  relation: "brother",
-  img: "img/jenspeter.jpg"
-}];
-
-console.log(familyMembers);
+fetch('json/persons.json')
+  .then(function (response) {
+    return response.json();
+  })
+  .then(function (jsonData) {
+    console.log(jsonData);
+    _familyMembers = jsonData; // storing my json data in a global variable for later use. 
+    appendPersons(_familyMembers);
+  });
 
 /*
 Appends json data to the DOM
@@ -60,15 +36,16 @@ function appendPersons(persons) {
   document.querySelector("#persons").innerHTML = htmlTemplate;
 }
 
-appendPersons(familyMembers);
-
+/**
+ * Filtering family members by given searchValue
+ */
 function search(searchValue) {
   searchValue = searchValue.toLowerCase();
   console.log(searchValue);
 
   let filteredFamilyMembers = [];
 
-  for (let familyMember of familyMembers) {
+  for (let familyMember of _familyMembers) {
     let name = familyMember.name.toLowerCase();
     if (name.includes(searchValue.toLowerCase())) {
       filteredFamilyMembers.push(familyMember);
@@ -77,6 +54,9 @@ function search(searchValue) {
   appendPersons(filteredFamilyMembers);
 }
 
+/**
+ * Adding a new family member to the _familyMember array
+ */
 function add() {
   let inputName = document.getElementById('inputName');
   let inputAge = document.getElementById('inputAge');
@@ -93,7 +73,7 @@ function add() {
   };
   console.log(newPerson);
 
-  familyMembers.push(newPerson);
+  _familyMembers.push(newPerson);
   appendPersons(familyMembers);
 }
 

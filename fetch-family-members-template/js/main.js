@@ -1,6 +1,6 @@
 // =========== Product functionality =========== //
 /*
-global variables: _products
+global variable: _familyMembers
 */
 let _familyMembers = [];
 
