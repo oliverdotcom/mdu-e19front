@@ -74,6 +74,6 @@ function add() {
   console.log(newPerson);
 
   _familyMembers.push(newPerson);
-  appendPersons(familyMembers);
+  appendPersons(_familyMembers);
 }
 

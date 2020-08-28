@@ -15,8 +15,19 @@
     <h1>FETCH Family Members</h1>
   </header>
 
+  <input type="search" placeholder="Search" onkeyup="search(this.value)" onsearch="search('')">
+
   <section id="persons" class="grid-container">
   </section>
+
+  <form>
+    <input id="inputName" type="text" placeholder="Name">
+    <input id="inputAge" type="number" placeholder="Age">
+    <input id="inputHairColor" type="text" placeholder="Hair Color">
+    <input id="inputRelation" type="text" placeholder="Relation">
+    <input id="inputImageUrl" type="url" placeholder="Image url">
+    <button type="button" name="button" onclick="add()">Add</button>
+  </form>
   <!-- main js file -->
   <script src="js/main.js"></script>
 </body>
