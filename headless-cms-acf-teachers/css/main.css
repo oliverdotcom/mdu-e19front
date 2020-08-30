@@ -9,13 +9,18 @@ html {
 }
 
 h1 {
-  font-size: 1.5em;
+  font-size: 2em;
   font-weight: 300;
   letter-spacing: 3px;
-  text-transform: uppercase;
 }
 
-/* Grid container */
+h3 {
+  font-size: 1.2em;
+  font-weight: 400;
+  letter-spacing: 2px;
+}
+
+/* ---------- grid container styling ---------- */
 .grid-container {
   display: grid;
   grid-template-columns: 100%;
@@ -42,5 +47,4 @@ h1 {
 .grid-container>article img {
   max-width: 300px;
   width: 100%;
-  margin-bottom: 1em;
 }
