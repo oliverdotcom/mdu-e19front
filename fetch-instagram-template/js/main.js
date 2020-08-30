@@ -2,6 +2,7 @@
 
 function fetchInstagramPosts(userName) {
   let url = `https://instagram.com/${userName}/?__a=1`;
+  console.log(url);
   fetch(url)
     .then(function (response) {
       return response.json();

@@ -1,7 +1,7 @@
 "use strict";
 
-// const url = "https://api.cederdorff.com/wp-json/wp/v2/posts";
-const url = "https://api.cederdorff.com/wp-json/wp/v2/posts?_embed";
+const url = "https://api.cederdorff.com/wp-json/wp/v2/posts";
+// const url = "https://api.cederdorff.com/wp-json/wp/v2/posts?_embed";
 
 fetch(url)
   .then(function (response) {
