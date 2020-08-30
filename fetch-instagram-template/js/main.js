@@ -18,7 +18,7 @@ function appendPosts(posts) {
   // TODO: Append posts using a loop
 }
 
-function appendProfileInfo() {
+function appendProfileInfo(userInfo) {
   // TODO Append IG profile info like username, full name, mail, biography, profile picture, etc. 
 }
 
