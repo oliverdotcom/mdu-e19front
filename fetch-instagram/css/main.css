@@ -65,9 +65,16 @@ button {
 .grid-container>article {
   text-align: center;
   padding: 10px;
+  word-wrap: break-word;
 }
 
 .grid-container>article img {
   width: 100%;
   height: auto;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
 }

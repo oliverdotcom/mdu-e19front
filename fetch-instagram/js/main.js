@@ -17,7 +17,7 @@ function appendPosts(posts) {
     let likes = post.node.edge_liked_by.count;
     let comments = post.node.edge_media_to_comment.count;
     let location = post.node.location.name;
-    let taggedUsers = post.node.edge_media_to_tagged_user.edges;
+    let taggedUsers = taggedUsersToString(post.node.edge_media_to_tagged_user.edges);
     console.log(imageUrl);
     console.log(imageCaption);
     console.log(likes);
@@ -28,11 +28,22 @@ function appendPosts(posts) {
     htmlTemplate += /*html*/ `
       <article>
         <img src="${imageUrl}">
-        <p>Likes: ${likes}</p>
+        <p>Likes: ${likes}, Comments: ${comments}</p>
+        <p>${imageCaption}</p>
+        <p>Location: ${location}</p>
+        Tagged Users: ${taggedUsers}
       </article>
     `;
   }
   document.querySelector("#instagram-posts").innerHTML = htmlTemplate;
+}
+
+function taggedUsersToString(taggedUsers) {
+  let htmlTemplate = "<ul>";
+  for (const taggedUser of taggedUsers) {
+    htmlTemplate += `<li>${taggedUser.node.user.full_name}</li>`;
+  }
+  return htmlTemplate + "</ul>";
 }
 
 fetchInstagramPosts();
