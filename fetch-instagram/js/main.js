@@ -18,12 +18,6 @@ function appendPosts(posts) {
     let comments = post.node.edge_media_to_comment.count;
     let location = post.node.location.name;
     let taggedUsers = taggedUsersToString(post.node.edge_media_to_tagged_user.edges);
-    console.log(imageUrl);
-    console.log(imageCaption);
-    console.log(likes);
-    console.log(comments);
-    console.log(location);
-    console.log(taggedUsers);
 
     htmlTemplate += /*html*/ `
       <article>
