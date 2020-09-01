@@ -1,11 +1,10 @@
 "use strict"; // to enable strict mode and modern JavaScript functionality
 
-async function fetchInstagramPosts() {
-  let response = await fetch("https://instagram.com/cederdorff/?__a=1");
+async function fetchInstagramPosts(userName) {
+  let url = `https://instagram.com/${userName}/?__a=1`;
+  let response = await fetch(url);
   let data = await response.json();
-  console.log(data);
   let posts = data.graphql.user.edge_owner_to_timeline_media.edges;
-  console.log(posts);
   appendPosts(posts);
 }
 
@@ -40,4 +39,4 @@ function taggedUsersToString(taggedUsers) {
   return htmlTemplate + "</ul>";
 }
 
-fetchInstagramPosts();
+fetchInstagramPosts("cederdorff");
