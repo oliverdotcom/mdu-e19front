@@ -199,7 +199,7 @@ form {
   margin: auto;
 }
 
-form button, .button {
+form button {
   font-weight: 200;
   text-align: center;
   cursor: pointer;
@@ -211,7 +211,6 @@ form button, .button {
   background-color: rgb(38, 76, 89);
   width: 100%;
   max-width: 350px;
-  text-decoration: none;
 }
 
 input, select {

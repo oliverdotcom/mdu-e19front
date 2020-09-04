@@ -6,14 +6,38 @@
 let _movies = [];
 
 // fetch all movies from WP
-function getMovies() {
+async function getMovies() {
   // TODO: fetch movies from wp headless and call appendMovies
   // https://movie-api.cederdorff.com/wp-json/wp/v2/posts?_embed
+  let response = await fetch("https://movie-api.cederdorff.com/wp-json/wp/v2/posts");
+  let data = await response.json();
+  console.log(data);
+  _movies = data;
+  appendMovies(_movies);
 }
+
+getMovies();
 
 // append movies to the DOM
 function appendMovies(movies) {
   // TODO: append movies to #movies-container
+
+  let html = "";
+  console.log(movies);
+
+  for (const movie of movies) {
+    html += /*html*/`
+      <article>
+        <h2>${movie.title.rendered} (${movie.acf.year})</h2>
+        <img src="${movie.acf.img}">
+        ${movie.content.rendered}
+        <a class="button" href="${movie.acf.trailer}">Watch Trailer</a>
+      </article>
+    `;
+  }
+  console.log(html);
+  document.querySelector("#movies-container").innerHTML = html;
+  showLoader(false);
 }
 
 // search functionality
