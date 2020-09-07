@@ -15,7 +15,7 @@
   <!-- tabbar navigation -->
   <nav class="tabbar">
     <a href="#movies">Movies</a>
-    <a href="#genre">Genre</a>
+    <a href="#category">Categories</a>
   </nav>
 
   <!-- pages -->
@@ -29,15 +29,15 @@
   </section>
 
   <!-- category page -->
-  <section id="genre" class="page">
+  <section id="category" class=" page">
     <header class="topbar">
-      <h2>Movies By Genre</h2>
+      <h2>Movies By Category</h2>
     </header>
-    <select id="select-genre" name="genre" onchange="genreSelected(this.value)">
-      <option value="">Select Genre</option>
+    <select id="select-category" onchange="categorySelected(this.value)">
+      <option value="">Select Category</option>
     </select>
-    <section id="movies-by-genre-container" class="grid-container">
-      <p>Please, select genre</p>
+    <section id="movies-by-category-container" class="grid-container">
+      <p>Please, select category</p>
     </section>
   </section>
 

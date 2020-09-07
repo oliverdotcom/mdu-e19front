@@ -46,46 +46,45 @@ function search(value) {
 }
 
 // fetch all genres / categories from WP
-async function getGenres() {
+async function getCategories() {
   let response = await fetch("https://movie-api.cederdorff.com/wp-json/wp/v2/categories");
   let data = await response.json();
   console.log(data);
-  appendGenres(data);
+  appendCategories(data);
 }
 
-getGenres();
+getCategories();
 
 // append all genres as select options (dropdown)
-function appendGenres(genres) {
+function appendCategories(categories) {
   let htmlTemplate = "";
-  for (let genre of genres) {
+  for (let category of categories) {
     htmlTemplate += /*html*/ `
-      <option value="${genre.id}">${genre.name}</option>
+      <option value="${category.id}">${category.name}</option>
     `;
   }
-  document.querySelector('#select-genre').innerHTML += htmlTemplate;
+  document.querySelector('#select-category').innerHTML += htmlTemplate;
 }
 
-// genre selected event - fetch movies by selected category
-async function genreSelected(genreId) {
-  console.log(`Genre ID: ${genreId}`);
-  if (genreId) {
+// category selected event - fetch movies by selected category
+async function categorySelected(categoryId) {
+  if (categoryId) {
     showLoader(true);
-    let response = await fetch(`https://movie-api.cederdorff.com/wp-json/wp/v2/posts?_embed&categories=${genreId}`)
+    let response = await fetch(`https://movie-api.cederdorff.com/wp-json/wp/v2/posts?_embed&categories=${categoryId}`)
     let data = await response.json();
-    appendMoviesByGenre(data);
+    appendMoviesByCategory(data);
     showLoader(false);
   } else {
-    document.querySelector('#movies-by-genre-container').innerHTML = /*html*/ `
-      <p>Please, select genre</p>
+    document.querySelector('#movies-by-category-container').innerHTML = /*html*/ `
+      <p>Please, select category</p>
     `;
   }
 }
 
 // append movies by genre
-function appendMoviesByGenre(moviesByGenre) {
+function appendMoviesByCategory(moviesByCategory) {
   let htmlTemplate = "";
-  for (let movie of moviesByGenre) {
+  for (let movie of moviesByCategory) {
     htmlTemplate += /*html*/ `
       <article>
         <h2>${movie.title.rendered} (${movie.acf.year})</h2>
@@ -96,12 +95,12 @@ function appendMoviesByGenre(moviesByGenre) {
     `;
   }
   // if no movies, display feedback to the user
-  if (moviesByGenre.length === 0) {
+  if (moviesByCategory.length === 0) {
     htmlTemplate = /*html*/ `
       <p>No Movies</p>
     `;
   }
-  document.querySelector('#movies-by-genre-container').innerHTML = htmlTemplate;
+  document.querySelector('#movies-by-category-container').innerHTML = htmlTemplate;
 }
 
 
