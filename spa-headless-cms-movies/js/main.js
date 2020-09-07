@@ -19,7 +19,6 @@ getMovies();
 // append movies to the DOM
 function appendMovies(movies) {
   let htmlTemplate = "";
-
   for (let movie of movies) {
     htmlTemplate += /*html*/ `
       <article>
@@ -30,7 +29,6 @@ function appendMovies(movies) {
       </article>
     `;
   }
-
   document.querySelector('#movies-container').innerHTML = htmlTemplate;
 }
 
@@ -75,7 +73,6 @@ async function genreSelected(genreId) {
     showLoader(true);
     let response = await fetch(`https://movie-api.cederdorff.com/wp-json/wp/v2/posts?_embed&categories=${genreId}`)
     let data = await response.json();
-    console.log(data);
     appendMoviesByGenre(data);
     showLoader(false);
   } else {
@@ -98,14 +95,12 @@ function appendMoviesByGenre(moviesByGenre) {
       </article>
     `;
   }
-
   // if no movies, display feedback to the user
   if (moviesByGenre.length === 0) {
     htmlTemplate = /*html*/ `
       <p>No Movies</p>
     `;
   }
-
   document.querySelector('#movies-by-genre-container').innerHTML = htmlTemplate;
 }
 
@@ -120,7 +115,3 @@ function showLoader(show = true) {
     loader.classList.add("hide");
   }
 }
-
-showLoader();
-showLoader(true);
-showLoader(false);
