@@ -1,19 +1,29 @@
 "use strict";
 
-const url = "https://api.cederdorff.com/wp-json/wp/v2/posts";
-// const url = "https://api.cederdorff.com/wp-json/wp/v2/posts?_embed";
+async function getData() {
+  let response = await fetch("http://persons-api.racedev.dk/wp-json/wp/v2/posts");
+  let jsonData = response.json();
+  console.log(jsonData);
+  appendPosts(jsonData);
+}
 
-fetch(url)
-  .then(function (response) {
-    return response.json();
-  })
-  .then(function (posts) {
-    console.log(posts);
-  });
+getData();
 
 // append wp posts to the DOM
 function appendPosts(posts) {
-
+  let template = "";
+  for (const post of posts) {
+    console.log(post);
+    template += /*html*/`
+      <article>
+        <img src="${post.acf.image.url}">
+        <h2>${post.title.rendered}</h2>
+        <a href="mailto:${post.acf.mail}">${post.acf.mail}</a>
+        <p>${post.acf.age} years old</p>
+      </article>
+    `;
+  }
+  document.getElementById("content").innerHTML = template;
 }
 
 // get the featured image url
