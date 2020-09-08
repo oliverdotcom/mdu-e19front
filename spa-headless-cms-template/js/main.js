@@ -14,7 +14,7 @@ async function getData() {
 getData();
 
 // append data to the DOM
-function appendMovies(data) {
+function appendData(data) {
 
 }
 
