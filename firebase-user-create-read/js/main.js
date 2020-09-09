@@ -17,9 +17,9 @@ const db = firebase.firestore();
 const userRef = db.collection("users");
 
 // watch the database ref for changes
-userRef.onSnapshot(function(snapshotData) {
+userRef.onSnapshot(function (snapshotData) {
   let users = [];
-  snapshotData.forEach(function(doc) {
+  snapshotData.forEach(function (doc) {
     let user = doc.data();
     console.log(user);
     user.id = doc.id;
