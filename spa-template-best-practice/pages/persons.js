@@ -1,12 +1,13 @@
-import _personService from "../services/persons.js";
+import personService from "../services/persons.js";
 export default class PersonsPage {
   constructor() {
     this.template();
     this.initData();
   }
 
-  initData() {
-
+  async initData() {
+    let persons = await personService.loadPersons();
+    this.appendPersons(persons);
   }
 
   template() {
