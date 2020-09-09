@@ -84,15 +84,8 @@ class MovieService {
   }
 
   search(value) {
-    let searchQuery = value.toLowerCase();
-    let filteredMovies = [];
-    for (let movie of this.movies) {
-      let title = movie.title.rendered.toLowerCase();
-      if (title.includes(searchQuery)) {
-        filteredMovies.push(movie);
-      }
-    }
-    console.log(filteredMovies);
+    let searchValue = value.toLowerCase();
+    let filteredMovies = this.movies.filter(movie => movie.title.rendered.toLowerCase().includes(searchValue));
     this.appendMovies(filteredMovies);
   }
 }

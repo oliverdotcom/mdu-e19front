@@ -8,12 +8,8 @@ class MovieService {
     this.loader = new Loader();
   }
 
-  async getMovies() {
-    let data = await fetch('https://movie-api.cederdorff.com/wp-json/wp/v2/posts?_embed').then(res => res.json());
-    console.log(data);
-    this.movies = data;
-    this.appendMovies(this.movies);
-    this.loader.show(false);
+  getMovies() {
+
   }
 
   getCategories() {
@@ -27,7 +23,7 @@ class MovieService {
   appendMovies(movies) {
     let htmlTemplate = "";
     for (let movie of movies) {
-      htmlTemplate += `
+      htmlTemplate += /*html*/`
         <article>
           <h2>${movie.title.rendered} (${movie.acf.year})</h2>
           <img src="${movie.acf.img}">
@@ -42,7 +38,7 @@ class MovieService {
   appendCategories() {
     let htmlTemplate = "";
     for (let category of this.categories) {
-      htmlTemplate += `
+      htmlTemplate += /*html*/`
         <option value="${category.id}">${category.name}</option>
       `;
     }
@@ -53,7 +49,7 @@ class MovieService {
   appendMoviesByCategory(movies) {
     let htmlTemplate = "";
     for (let movie of movies) {
-      htmlTemplate += `
+      htmlTemplate += /*html*/`
         <article>
           <h2>${movie.title.rendered} (${movie.acf.year})</h2>
           <img src="${movie.acf.img}">
@@ -64,7 +60,7 @@ class MovieService {
     }
     // if no movies, display feedback to the user
     if (movies.length === 0) {
-      htmlTemplate = `
+      htmlTemplate = /*html*/`
         <p>No Movies</p>
       `;
     }
@@ -73,15 +69,8 @@ class MovieService {
   }
 
   search(value) {
-    let searchQuery = value.toLowerCase();
-    let filteredMovies = [];
-    for (let movie of this.movies) {
-      let title = movie.title.rendered.toLowerCase();
-      if (title.includes(searchQuery)) {
-        filteredMovies.push(movie);
-      }
-    }
-    console.log(filteredMovies);
+    let searchValue = value.toLowerCase();
+    let filteredMovies = this.movies.filter(movie => movie.title.rendered.toLowerCase().includes(searchValue));
     this.appendMovies(filteredMovies);
   }
 }
