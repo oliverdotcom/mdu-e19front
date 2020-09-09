@@ -49,7 +49,7 @@ export default class UserService {
 
   // ========== UPDATE ==========
   update(id, name, mail) {
-    this.userRef.doc(id).set({
+    this.userRef.doc(id).update({
       name,
       mail
     });

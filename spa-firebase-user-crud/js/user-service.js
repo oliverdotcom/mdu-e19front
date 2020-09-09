@@ -29,7 +29,7 @@ export default class UserService {
       htmlTemplate += `
       <article>
         <h2>${user.name}</h2>
-        <img src="${user.img}">
+        <img src="${user.img || 'img/placeholder.jpg'}">
         <p><a href="mailto:${user.mail}">${user.mail}</a></p>
         <button onclick="selectUser('${user.id}','${user.name}', '${user.mail}', '${user.img}')">Update</button>
         <button onclick="deleteUser('${user.id}')">Delete</button>
@@ -51,7 +51,7 @@ export default class UserService {
 
   // ========== UPDATE ==========
   update(id, name, mail, img) {
-    this.userRef.doc(id).set({
+    this.userRef.doc(id).update({
       name,
       mail,
       img
