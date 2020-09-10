@@ -2,7 +2,7 @@ import personService from "../services/persons.js";
 export default class PersonsPage {
   constructor() {
     this.template();
-    this.personsService = personService
+    this.personsService = personService;
     this.personsService.loadPersons().then(persons => this.appendPersons(persons));
   }
 
