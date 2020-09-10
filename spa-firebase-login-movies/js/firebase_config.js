@@ -2,7 +2,7 @@
 
 // ========== GLOBAL FIREBASE CONFIG ========== //
 // Your web app's Firebase configuration
-const firebaseConfig = {
+const _firebaseConfig = {
   apiKey: "AIzaSyCI_VTBj8inrJWIjIYf_Y7bBpT9aRRQS1o",
   authDomain: "user-app-289f1.firebaseapp.com",
   databaseURL: "https://user-app-289f1.firebaseio.com",
