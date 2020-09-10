@@ -8,15 +8,15 @@ const firebaseConfig = {
   appId: "1:438369021654:web:8138ce7351d51603c0a377"
 };
 firebase.initializeApp(firebaseConfig);
-const db = firebase.firestore();
-const userRef = db.collection("users");
+const _db = firebase.firestore();
+const _userRef = _db.collection("users");
 
 let _selectedUserId = "";
 let _selectedImgFile = "";
 
 // ========== READ ==========
 // watch the database ref for changes
-userRef.onSnapshot(function (snapshotData) {
+_userRef.onSnapshot(function (snapshotData) {
   let users = [];
   snapshotData.forEach(function (doc) {
     let user = doc.data();
@@ -57,7 +57,7 @@ function createUser() {
     img: imageInput.src
   };
 
-  userRef.add(newUser);
+  _userRef.add(newUser);
   navigateTo("home");
 }
 
@@ -85,13 +85,13 @@ function updateUser() {
     mail: mailInput.value,
     img: imageInput.src
   };
-  userRef.doc(_selectedUserId).update(userToUpdate);
+  _userRef.doc(_selectedUserId).update(userToUpdate);
   navigateTo("home");
 }
 
 // ========== DELETE ==========
 function deleteUser(id) {
-  userRef.doc(id).delete();
+  _userRef.doc(id).delete();
 }
 
 function previewImage(file, previewId) {
