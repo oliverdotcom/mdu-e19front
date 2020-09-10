@@ -2,13 +2,13 @@
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyBAnIrbdeQLbwO3MY7lyD_75HfKJH12-pA",
-  authDomain: "user-crud-a48d3.firebaseapp.com",
-  databaseURL: "https://user-crud-a48d3.firebaseio.com",
-  projectId: "user-crud-a48d3",
-  storageBucket: "user-crud-a48d3.appspot.com",
-  messagingSenderId: "78474489693",
-  appId: "1:78474489693:web:af9d0ca257a501437282b4"
+  apiKey: "AIzaSyCI_VTBj8inrJWIjIYf_Y7bBpT9aRRQS1o",
+  authDomain: "user-app-289f1.firebaseapp.com",
+  databaseURL: "https://user-app-289f1.firebaseio.com",
+  projectId: "user-app-289f1",
+  storageBucket: "user-app-289f1.appspot.com",
+  messagingSenderId: "438369021654",
+  appId: "1:438369021654:web:8138ce7351d51603c0a377"
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
@@ -17,7 +17,7 @@ const db = firebase.firestore();
 const userRef = db.collection("users");
 
 // watch the database ref for changes
-userRef.onSnapshot(function(snapshotData) {
+userRef.onSnapshot(function (snapshotData) {
   let users = snapshotData.docs;
   console.log(users);
   appendUsers(users);
