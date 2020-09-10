@@ -53,7 +53,7 @@
     <form>
       <input type="text" id="name-update" placeholder="Name" required>
       <input type="email" id="mail-update" placeholder="Mail" required>
-      <input type="file" id="img" accept="image/*" onchange="previewImage(this.files[0], 'imagePreviewUpdate')">
+      <input type="file" id="img-update" accept="image/*" onchange="previewImage(this.files[0], 'imagePreviewUpdate')">
       <img id="imagePreviewUpdate" class="image-preview">
       <button type="button" name="button" onclick="updateUser()">Save User</button>
     </form>
@@ -63,10 +63,8 @@
   <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-app.js"></script>
   <!-- Firebase Firestore (database) JS SDK -->
   <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-firestore.js"></script>
-  <!-- Single Page Functionality  -->
-  <script src="js/spa.js"></script>
   <!-- main js file -->
-  <script src="js/main.js"></script>
+  <script src="js/main.js" type="module"></script>
 </body>
 
 </html>
