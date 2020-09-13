@@ -126,9 +126,9 @@ function init() {
   });
 
   // init all movies
-  _movieRef.onSnapshot(function (snapshotData) {
+  _movieRef.orderBy("year").onSnapshot(snapshotData => {
     _movies = [];
-    snapshotData.forEach(function (doc) {
+    snapshotData.forEach(doc => {
       let movie = doc.data();
       movie.id = doc.id;
       _movies.push(movie);
