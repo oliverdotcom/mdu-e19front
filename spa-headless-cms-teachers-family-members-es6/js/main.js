@@ -5,7 +5,6 @@ let _familyMembers = [];
 let _teachers = [];
 
 // ---------- Fetch data from data sources ---------- //
-
 /*
 Fetches post data from my headless cms
 */
