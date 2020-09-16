@@ -21,8 +21,8 @@ function appendCards(posts) {
                 <h2>${post.title.rendered}</h2>
                 <div class="slideshow-container">
                         <img src="${post.acf.image_1.url}" style="width:100%">
-                        <img src="${post.acf.image_2.url}" style="width:100%">
-                        <img src="${post.acf.image_3.url}" style="width:100%">
+                        <!-- <img src="${post.acf.image_2.url}" style="width:100%">
+                        <img src="${post.acf.image_3.url}" style="width:100%"> -->
                 </div>
             </article>
         `;
