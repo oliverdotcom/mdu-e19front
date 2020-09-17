@@ -71,7 +71,9 @@ function logout() {
 }
 
 function appendUserData(user) {
-  document.querySelector('#profile').innerHTML += `
+  console.log(user);
+  document.querySelector('#user-data').innerHTML = `
+    <img class="profile-img" src="${user.photoURL || "img/placeholder.jpg"}">
     <h3>${user.displayName}</h3>
     <p>${user.email}</p>
   `;

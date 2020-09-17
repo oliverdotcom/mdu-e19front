@@ -205,3 +205,7 @@ h1 {
 .firebaseui-textfield.mdl-textfield .firebaseui-label::after {
   background-color: var(--green);
 }
+
+.profile-img{
+  width: 100%;
+}
