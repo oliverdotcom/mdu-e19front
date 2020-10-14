@@ -1602,7 +1602,7 @@ let _data = [
 ];
 
 // 2: prepare data for chart
-// seperating the objects to arrays: months and sales
+// seperating the objects to arrays: dates and infected
 // why? that's how chart.js reads the data :)
 function prepareData(data) {
   // declaring two array to store the data 
