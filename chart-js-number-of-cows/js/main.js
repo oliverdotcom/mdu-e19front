@@ -1,5 +1,6 @@
 "use strict";
 
+//1: data
 let _data = [{
   year: "year1",
   numberOfCows: 51
@@ -17,6 +18,7 @@ let _data = [{
   numberOfCows: 50
 }];
 
+// 2: Prepare data 
 function prepareData(data) {
   let cows = [];
   let years = [];
@@ -34,6 +36,7 @@ function prepareData(data) {
   }
 }
 
+// 3: Append the chart
 function appendChart(data) {
   let chartData = prepareData(data);
   // console.log(chartData);
