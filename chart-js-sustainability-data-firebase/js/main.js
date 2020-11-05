@@ -13,29 +13,29 @@ _dataRef.orderBy("year").onSnapshot(snapshotData => {
     _sustainabilityData.push(data); // push the data object to the global array _sustainabilityData
   });
   console.log(_sustainabilityData);
-  appendCows(_sustainabilityData); // call appendCows with _sustainabilityData as function argument
   appendCarbonFootprint(_sustainabilityData); //call appendCarbonFootprint with _sustainabilityData as function argument
   appendMilkProduction(_sustainabilityData); //call appendMilkProduction with _sustainabilityData as function argument
+  appendSelfSuffiency(_sustainabilityData); //call appendMilkProduction with _sustainabilityData as function argument
 });
 
 // 2: preparing the data
-function prepareCowData(sustainabilityData) {
-  let cows = [];
+function prepareSelfSuffiencyData(sustainabilityData) {
+  let selfSuffiency = [];
   let years = [];
   sustainabilityData.forEach(data => {
-    if (data.region === 'north') { // in this case we only want the data from 'north'
-      cows.push(data.herdYearCows);
+    if (data.region === 'south') { // in this case we only want the data from 'north'
+      selfSuffiency.push(data.herdSelfSuffiencyInFeed);
       years.push(data.year);
     }
   });
   return {
-    cows,
+    selfSuffiency,
     years
   }
 }
 //3: appending the chart
-function appendCows(sustainabilityData) {
-  let data = prepareCowData(sustainabilityData);
+function appendSelfSuffiency(sustainabilityData) {
+  let data = prepareSelfSuffiencyData(sustainabilityData);
   console.log(data);
   // generate chart
   let chartContainer = document.querySelector('#cows');
@@ -43,15 +43,15 @@ function appendCows(sustainabilityData) {
     type: 'line',
     data: {
       datasets: [{
-        data: data.cows,
-        label: 'Number of Cows',
-        fill: false,
-        borderColor: "#e755ba",
-        backgroundColor: "#e755ba",
-        pointBackgroundColor: "#55bae7",
-        pointBorderColor: "#55bae7",
-        pointHoverBackgroundColor: "#55bae7",
-        pointHoverBorderColor: "#55bae7",
+        data: data.selfSuffiency,
+        label: 'Self Suffiency in Feed (%)',
+        fill: true,
+        borderColor: "#ffd000",
+        backgroundColor: gradientFill,
+        pointBackgroundColor: "#f8b03c",
+        pointBorderColor: "#f8b03c",
+        pointHoverBackgroundColor: "f8b03c",
+        pointHoverBorderColor: "f8b03c",
       }],
       labels: data.years
     },
@@ -59,8 +59,8 @@ function appendCows(sustainabilityData) {
       scales: {
         yAxes: [{
           ticks: {
-            min: (Math.min(...data.cows) - 5),
-            max: (Math.max(...data.cows) + 1)
+            min: 0,
+            max: 200
           }
         }]
       }
@@ -74,7 +74,7 @@ function prepareCarbonFootprintData(sustainabilityData) {
   let carbonFootprint = [];
   let years = [];
   sustainabilityData.forEach(data => {
-    if (data.region === 'north') { // in this case we only want the data from 'north'
+    if (data.region === 'south') { // in this case we only want the data from 'north'
       carbonFootprint.push(data.carbonFootprintWholeFarm);
       years.push(data.year);
     }
@@ -98,37 +98,36 @@ function appendCarbonFootprint(sustainabilityData) {
     data: {
       datasets: [{
         data: data.carbonFootprint,
-        label: 'Carbon Footprint WholeFarm',
-        fill: false,
-        borderColor: "#e755ba",
-        backgroundColor: "#e755ba",
-        pointBackgroundColor: "#55bae7",
-        pointBorderColor: "#55bae7",
-        pointHoverBackgroundColor: "#55bae7",
-        pointHoverBorderColor: "#55bae7",
+        label: 'Carbon Footprint',
+        fill: true,
+        borderColor: "#3a4443",
+        backgroundColor: gradientFill,
+        pointBackgroundColor: "#3a4443",
+        pointBorderColor: "#3a4443",
+        pointHoverBackgroundColor: "#3a4443",
+        pointHoverBorderColor: "#3a4443",
       }],
       labels: data.years
     }
   });
 }
 
+
 // 2: preparing the data
 function prepareMilkProductionData(sustainabilityData) {
+  // prepare data
+  let milkProduction = [];
   let years = [];
-  let milkNorth = [];
-  let milkSouth = [];
   sustainabilityData.forEach(data => {
-    if (data.region === 'north') { // condition testing whether the region is 'north' og 'south'
-      milkNorth.push(data.herdMilkProduction);
+    if (data.region === 'south') { // in this case we only want the data from 'north'
+      milkProduction.push(data.herdMilkProduction);
       years.push(data.year);
-    } else if (data.region === 'south') {
-      milkSouth.push(data.herdMilkProduction);
     }
   });
+
   return {
-    years,
-    milkNorth,
-    milkSouth
+    milkProduction,
+    years
   }
 }
 
@@ -142,34 +141,23 @@ function appendMilkProduction(sustainabilityData) {
   let chart = new Chart(chartContainer, {
     type: 'line',
     data: {
-      datasets: [
-        // first dataset - north
-        {
-          data: data.milkNorth,
-          label: 'Milk Production North',
-          fill: false,
-          borderColor: "#e755ba",
-          backgroundColor: "#e755ba",
-          pointBackgroundColor: "#55bae7",
-          pointBorderColor: "#55bae7",
-          pointHoverBackgroundColor: "#55bae7",
-          pointHoverBorderColor: "#55bae7",
-        },
-        // secobd dataset - south
-        {
-          label: 'Milk Production South',
-          data: data.milkSouth,
-          fill: false,
-          borderColor: "#55bae7",
-          backgroundColor: "#55bae7",
-          pointBackgroundColor: "#e755ba",
-          pointBorderColor: "#e755ba",
-          pointHoverBackgroundColor: "#e755ba",
-          pointHoverBorderColor: "#e755ba",
-          type: 'line'
-        }
-      ],
+      datasets: [{
+        data: data.milkProduction,
+        label: 'Milk Production (liters)',
+        fill: true,
+        borderColor: "#99bfe6",
+        backgroundColor: gradientFill,
+        pointBackgroundColor: "#99bfe6",
+        pointBorderColor: "#99bfe6",
+        pointHoverBackgroundColor: "#99bfe6",
+        pointHoverBorderColor: "#99bfe6",
+      }],
       labels: data.years
     }
   });
 }
+
+var chartContainer = document.getElementById("carbonFootprint").getContext('2d');
+var gradientFill = chartContainer.createLinearGradient(0, 0, 0, 800);
+gradientFill.addColorStop(0, "rgba(255, 208, 0, 1)");
+gradientFill.addColorStop(1, "rgba(255, 208, 0, 0.1)");

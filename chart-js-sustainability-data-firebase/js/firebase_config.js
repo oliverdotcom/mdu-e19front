@@ -1,14 +1,16 @@
 "use strict";
 // Your web app's Firebase configuration
+
 const _firebaseConfig = {
-  apiKey: "AIzaSyCMyBxTqrwDePj6kSVgD5rVsEQ-66FCoCk",
-  authDomain: "mdu-e18front.firebaseapp.com",
-  databaseURL: "https://mdu-e18front.firebaseio.com",
-  projectId: "mdu-e18front",
-  storageBucket: "mdu-e18front.appspot.com",
-  messagingSenderId: "1065294705229",
-  appId: "1:1065294705229:web:81f00c89d44d800c75e204"
+  apiKey: "AIzaSyB_XZDIiicBhPGALFj4ikeZtqk34jQllXk",
+  authDomain: "arlab2b.firebaseapp.com",
+  databaseURL: "https://arlab2b.firebaseio.com",
+  projectId: "arlab2b",
+  storageBucket: "arlab2b.appspot.com",
+  messagingSenderId: "786345968830",
+  appId: "1:786345968830:web:2327bf9f1d27dee8cf8aef"
 };
+
 // Initialize Firebase and database references
 firebase.initializeApp(_firebaseConfig);
 const _db = firebase.firestore();
